@@ -90,7 +90,7 @@ $ajaxUtils.sendGetRequest(
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
-     var chosenCategoryShortName = chooseRandomCategory(['L','A','B','SP','C'])
+     var chosenCategoryShortName = chooseRandomCategory(categories)
 
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
@@ -104,13 +104,13 @@ $ajaxUtils.sendGetRequest(
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
       //
-      var homeHtmlToInsertIntoMainPage = insertProperty({{randomCategoryShortName}},'' ,chosenCategoryShortName )
+      var homeHtmlToInsertIntoMainPage = insertProperty({randomCategoryShortName}},chooseRandomCategory,categories[i])
 
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
-    insertHtml ("#main-content ,homeHtmlToInsertIntoMainPage)
+    insertHtml ("#main-content" , homeHtmlToInsertIntoMainPage)
 
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.], // ***** <---- TODO: STEP 1: Substitute [...] ******
@@ -361,12 +361,12 @@ function insertItemPortionName(html,
   if (!portionValue) {
     return insertProperty(html, portionPropName, "");
   }
-
+['L','A','B','SP','C']
   portionValue = "(" + portionValue + ")";
   html = insertProperty(html, portionPropName, portionValue);
   return html;
 }
-
+ categories = ['L','A','B','SP','C']
 
 global.$dc = dc;
 
