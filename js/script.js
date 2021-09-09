@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@alixwoods 
+adwait2905
+/
+adwait.github.io
+Public
+1
+1
+0
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+adwait.github.io/js/script.js /
+@adwait2905
+adwait2905 Create script.js
+Latest commit 45fd521 28 days ago
+ History
+ 1 contributor
+347 lines (290 sloc)  11.2 KB
+  
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
   // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
@@ -83,38 +114,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  [ $ajaxUtils.sendGetRequest(
-    homeHtmlUrl,
-    function (homeHtml) {
-
-      // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
-      // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
-      // variable's name implies it expects.
-     var chosenCategoryShortName = chooseRandomCategory(categories)
-
-
-      // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
-      // chosen category from STEP 2. Use existing insertProperty function for that purpose.
-      // Look through this code for an example of how to do use the insertProperty function.
-      // WARNING! You are inserting something that will have to result in a valid Javascript
-      // syntax because the substitution of {{randomCategoryShortName}} becomes an argument
-      // being passed into the $dc.loadMenuItems function. Think about what that argument needs
-      // to look like. For example, a valid call would look something like this:
-      // $dc.loadMenuItems('L')
-      // Hint: you need to surround the chosen category short name with something before inserting
-      // it into the home html snippet.
-      //
-      var homeHtmlToInsertIntoMainPage = insertProperty('{{randomCategoryShortName}}',"short_name",chosenCategoryShortName )
-
-
-      // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
-      // Use the existing insertHtml function for that purpose. Look through this code for an example
-      // of how to do that.
-    insertHtml ("#main-content" , homeHtmlToInsertIntoMainPage)
-
-    },
-    false)], // ***** <---- TODO: STEP 1: Substitute [...] ******
-  true); // Explicitly setting the flag to get JSON from server processed into an object literal
+  buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
+  true); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
 
@@ -132,6 +133,7 @@ function buildAndShowHomeHTML (categories) {
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
+      var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
 
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
@@ -146,12 +148,15 @@ function buildAndShowHomeHTML (categories) {
       // it into the home html snippet.
       //
       // var homeHtmlToInsertIntoMainPage = ....
+      chosenCategoryShortName = "'" + chosenCategoryShortName + "'";
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName);
 
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
+      insertHtml('#main-content', homeHtmlToInsertIntoMainPage);
 
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
@@ -361,13 +366,26 @@ function insertItemPortionName(html,
   if (!portionValue) {
     return insertProperty(html, portionPropName, "");
   }
-['L','A','B','SP','C']
+
   portionValue = "(" + portionValue + ")";
   html = insertProperty(html, portionPropName, portionValue);
   return html;
 }
- categories = ['L','A','B','SP','C']
+
 
 global.$dc = dc;
 
 })(window);
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
