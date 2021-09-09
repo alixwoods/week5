@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@alixwoods 
-adwait2905
-/
-adwait.github.io
-Public
-1
-1
-0
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-adwait.github.io/js/script.js /
-@adwait2905
-adwait2905 Create script.js
-Latest commit 45fd521 28 days ago
- History
- 1 contributor
-347 lines (290 sloc)  11.2 KB
-  
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
   // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
@@ -376,16 +345,3 @@ function insertItemPortionName(html,
 global.$dc = dc;
 
 })(window);
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
