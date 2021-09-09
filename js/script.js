@@ -343,5 +343,6 @@ function insertItemPortionName(html,
 
 
 global.$dc = dc;
+  .
 
 })(window);
